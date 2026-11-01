@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d12">
+<title>Angelina — A Little Something for You</title>
+<style>
+:root{--bg:#100d12;--panel:#19141b;--panel2:#211923;--line:#382b39;--ink:#f7eef3;--muted:#b8a8b3;--rose:#d6a4b8;--rose2:#9e6d82;--gold:#d7c1a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#392333 0%,#100d12 55%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:24px 18px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px}.brand{letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--rose)}.top small{color:var(--muted)}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,7vw,64px);line-height:1.02;margin:10px 0 12px}h2{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:0 0 8px}p{color:var(--muted);line-height:1.65}.intro{max-width:720px;margin-bottom:26px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.tab,.btn{border:1px solid var(--line);background:#211923;color:var(--ink);padding:11px 16px;border-radius:999px}.tab.active,.btn.primary{background:var(--rose);border-color:var(--rose);color:#21141b}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.small{padding:7px 11px;font-size:12px}.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:18px}.card{background:linear-gradient(145deg,#1e1721,#151117);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 18px 55px #0003}.card h2{margin-bottom:6px}.hint{font-size:13px;color:var(--muted);margin:0 0 16px}
+.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:var(--rose);letter-spacing:.06em;text-transform:uppercase}.field input,.field textarea,.field select{width:100%;background:#100d12;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--ink);outline:none}.field textarea{min-height:84px;resize:vertical}.field input:focus,.field textarea:focus{border-color:var(--rose)}
+.upload{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.upload input{max-width:100%;font-size:13px;color:var(--muted)}.list{display:grid;gap:9px;margin-top:14px}.item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:9px;background:#120f14;border:1px solid var(--line);border-radius:14px}.thumb{width:64px;height:64px;border-radius:9px;object-fit:cover;background:#30232f}.item strong{font-size:13px;display:block;overflow-wrap:anywhere}.item span{font-size:11px;color:var(--muted)}.item-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.preview{position:relative;overflow:hidden;border-radius:20px;background:#09070a;aspect-ratio:9/16;max-height:560px;margin:auto;display:flex;align-items:center;justify-content:center;border:1px solid #463342}.preview img,.preview video{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}.preview .shade{position:absolute;inset:0;background:linear-gradient(0deg,#09070ad9,transparent 65%);pointer-events:none}.preview-copy{z-index:2;position:absolute;bottom:28px;left:20px;right:20px;text-align:center;text-shadow:0 2px 12px #000}.preview-copy .cap{font-family:Georgia,serif;font-size:24px}.preview-copy .sub{font-size:12px;color:#eadde4;margin-top:8px}.empty{padding:32px 14px;text-align:center;color:var(--muted);font-size:13px}.status{font-size:12px;color:var(--gold);min-height:18px;margin-top:10px}.wide{width:100%;margin-top:10px}.notice{border:1px solid #59414e;background:#261b25;padding:13px;border-radius:13px;font-size:12px;color:#d8c6d0;line-height:1.6;margin-top:15px}
+.hidden{display:none!important}.footer{text-align:center;color:#796c76;font-size:11px;margin-top:28px}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 45px}.card{padding:16px}.preview{max-height:520px;max-width:300px}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><div class="brand">A private little project</div><small>Made with love, for Angelina</small></div><small>CREATOR STUDIO</small></header>
+<section class="intro">
+<div class="brand">A story made just for her</div>
+<h1>For Angelina<span style="color:var(--rose)">.</span></h1>
+<p>Build a little November surprise here. Add her photos one at a time, mix in video moments, choose the music and write the words you want her to remember. When you're happy, publish a separate page that shows only the finished experience.</p>
+</section>
+<div class="tabs"><button class="tab active" data-tab="studio">Creator studio</button><button class="tab" data-tab="welcome">Welcome & words</button></div>
+<section id="studio" class="grid">
+<div class="card">
+<h2>Your memories</h2><p class="hint">Add photos individually or select several. You can mix photos and video clips.</p>
+<div class="upload">
+<label class="btn" for="mediaInput">＋ Add photos / videos</label>
+<input id="mediaInput" type="file" accept="image/*,video/*" multiple>
+</div>
+<div class="field"><label for="audioInput">Background music / audio</label><input id="audioInput" type="file" accept="audio/*"></div>
+<div id="audioName" class="hint">No audio selected yet.</div>
+<div id="mediaList" class="list"><div class="empty">Your memories will appear here. Add the first photo to begin.</div></div>
+<div class="notice">Tip: use photos and clips you have permission to share. For the smoothest experience, use a mix of portrait photos and short video clips. The final page is self-contained, so your media is included in the file you publish.</div>
+</div>
+<div class="card">
+<h2>Preview</h2><p class="hint">A quick look at the current scene. Use the play button to preview the full sequence.</p>
+<div class="preview" id="preview"><div class="empty">Add a memory to see your preview.</div></div>
+<div class="upload" style="justify-content:center;margin-top:13px">
+<button class="btn small" id="prevScene">← Previous</button><button class="btn small" id="nextScene">Next →</button><button class="btn small primary" id="playPreview">▶ Play preview</button>
+</div>
+<div class="status" id="previewStatus"></div>
+</div>
+</section>
+<section id="welcome" class="card hidden">
+<h2>Set the feeling</h2><p class="hint">These words appear on her page. Make them sound like you.</p>
+<div class="field"><label for="welcomeTitle">Welcome title</label><input id="welcomeTitle" value="Happy 1st of November, Angelina."></div>
+<div class="field"><label for="welcomeLine">Welcome message</label><textarea id="welcomeLine">A new month, another chance to remind you how much I love and appreciate you. I’m grateful we’re still choosing each other, and I’m excited for everything ahead of us.</textarea></div>
+<div class="field"><label for="buttonText">Start button</label><input id="buttonText" value="Open your November surprise ♡"></div>
+<div class="field"><label for="endingTitle">Final scene title</label><input id="endingTitle" value="Here’s to us, and everything ahead..."></div>
+<div class="field"><label for="endingMessage">Your final message</label><textarea id="endingMessage">Happy new month, my love. I don’t ever want you to doubt how much you mean to me. I appreciate you, I’m grateful to have you in my life, and I want us to keep growing, making memories and moving forward together. I love you so much, Angelina.</textarea></div>
+<div class="field"><label for="sceneDuration">Photo scene duration (seconds)</label><input id="sceneDuration" type="number" min="2" max="15" value="5"></div>
+<div class="notice">Her page opens with the welcome screen. She taps once to begin. That tap also allows the music to play on her phone, since mobile browsers block automatic audio playback.</div>
+</section>
+<section class="card" style="margin-top:18px">
+<div class="grid" style="align-items:center">
+<div><h2>When it's ready</h2><p class="hint" style="margin:6px 0 0">Publish creates a separate, ready-to-host website for Angelina. It does not expose this creator studio.</p></div>
+<div><button class="btn primary wide" id="publish">Publish Angelina's surprise ↗</button><div id="publishStatus" class="status"></div></div>
+</div>
+</section>
+<div class="footer">A small website for a very special person · Keep the creator file private</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let scenes=[],audioData=null,audioFileName="",current=0,previewTimer=null,previewVideo=null;
+const mediaInput=$("mediaInput");
+mediaInput.addEventListener("change",async e=>{
+ const files=[...e.target.files];
+ for(const file of files){if(!file.type.startsWith("image/")&&!file.type.startsWith("video/"))continue;
+  const data=await readData(file);scenes.push({name:file.name,type:file.type.startsWith("video/")?"video":"image",data,caption:""});
+ }
+ current=Math.max(0,scenes.length-1);renderList();renderPreview();mediaInput.value="";
+});
+$("audioInput").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;audioData=await readData(f);audioFileName=f.name;$("audioName").textContent="Selected: "+f.name;});
+function readData(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file);});}
+function renderList(){
+ const box=$("mediaList");box.innerHTML="";
+ if(!scenes.length){box.innerHTML='<div class="empty">Your memories will appear here. Add the first photo to begin.</div>';return;}
+ scenes.forEach((s,i)=>{const el=document.createElement("div");el.className="item";
+ const thumb=s.type==="image"?`<img class="thumb" src="${s.data}">`:`<video class="thumb" src="${s.data}" muted></video>`;
+ el.innerHTML=`${thumb}<div><strong>${escapeHtml(s.name)}</strong><span>${s.type.toUpperCase()} · Scene ${i+1}</span><input aria-label="Scene caption" placeholder="Optional caption for this memory" value="${escapeAttr(s.caption)}" style="display:block;width:100%;margin-top:6px;background:#100d12;border:1px solid #382b39;border-radius:8px;padding:7px;color:#f7eef3;font-size:12px"></div><div class="item-actions"><button class="btn small" data-act="up">↑</button><button class="btn small" data-act="down">↓</button><button class="btn small" data-act="remove">×</button></div>`;
+ el.querySelector("input").addEventListener("input",ev=>s.caption=ev.target.value);
+ el.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const a=b.dataset.act;if(a==="remove")scenes.splice(i,1);if(a==="up"&&i>0)[scenes[i-1],scenes[i]]=[scenes[i],scenes[i-1]];if(a==="down"&&i<scenes.length-1)[scenes[i+1],scenes[i]]=[scenes[i],scenes[i+1]];current=Math.min(current,scenes.length-1);renderList();renderPreview();}));
+ box.appendChild(el);
+ });
+}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function escapeAttr(v){return escapeHtml(v);}
+function renderPreview(){
+ const p=$("preview");if(previewVideo){previewVideo.pause();previewVideo=null;}
+ if(!scenes.length){p.innerHTML='<div class="empty">Add a memory to see your preview.</div>';return;}
+ current=Math.max(0,Math.min(current,scenes.length-1));const s=scenes[current];
+ p.innerHTML=`${s.type==="image"?`<img src="${s.data}">`:`<video src="${s.data}" muted playsinline controls></video>`}<div class="shade"></div><div class="preview-copy"><div class="cap">${escapeHtml(s.caption||"A moment I wanted to keep")}</div><div class="sub">${current+1} / ${scenes.length}</div></div>`;
+ if(s.type==="video"){previewVideo=p.querySelector("video");}
+ $("previewStatus").textContent=`Scene ${current+1} of ${scenes.length}`;
+}
+$("prevScene").onclick=()=>{stopPreview();current=Math.max(0,current-1);renderPreview();};
+$("nextScene").onclick=()=>{stopPreview();current=Math.min(scenes.length-1,current+1);renderPreview();};
+function stopPreview(){if(previewTimer)clearTimeout(previewTimer);previewTimer=null;if(previewVideo)previewVideo.pause();$("playPreview").textContent="▶ Play preview";}
+$("playPreview").onclick=()=>{if(!scenes.length)return;if(previewTimer){stopPreview();return;}current=0;runPreview();};
+function runPreview(){renderPreview();$("playPreview").textContent="Ⅱ Stop preview";const s=scenes[current];let delay=(Number($("sceneDuration").value)||5)*1000;if(s.type==="video"){const v=$("preview").querySelector("video");if(v){v.muted=true;v.play().catch(()=>{});delay=Math.max(2500,Math.min((v.duration||5)*1000,15000));}}
+ previewTimer=setTimeout(()=>{if(current<scenes.length-1){current++;runPreview();}else stopPreview();},delay);}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===t));$("studio").classList.toggle("hidden",t.dataset.tab!=="studio");$("welcome").classList.toggle("hidden",t.dataset.tab!=="welcome");});
+$("publish").onclick=()=>{
+ if(!scenes.length){$("publishStatus").textContent="Add at least one photo or video first.";return;}
+ stopPreview();$("publishStatus").textContent="Preparing her private experience…";
+ const payload={title:$("welcomeTitle").value,line:$("welcomeLine").value,button:$("buttonText").value,endingTitle:$("endingTitle").value,ending:$("endingMessage").value,duration:Math.max(2,Math.min(15,Number($("sceneDuration").value)||5)),scenes,audio:audioData};
+ const output=makeViewer(payload);const blob=new Blob([output],{type:"text/html"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="for-angelina.html";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+ $("publishStatus").textContent="Published file created: for-angelina.html. Host this file on Cloudflare Pages to get her shareable link.";
+};
+function makeViewer(d){
+ const safe=JSON.stringify(d).replace(/</g,"\\u003c").replace(/<\/script/gi,"<\\/script");
+ return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#100d12"><title>For Angelina</title><style>
+ *{box-sizing:border-box}body{margin:0;background:#100d12;color:#f8eef3;font-family:Georgia,serif;overflow:hidden}.screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:26px;background:radial-gradient(ellipse at 50% 30%,#3c2636,#100d12 68%)}.welcome,.ending{max-width:560px;animation:appear 1.5s both}.eyebrow{font:11px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#d6a4b8}.title{font-size:clamp(42px,9vw,76px);font-weight:400;margin:18px 0}.line{font-size:clamp(17px,4vw,22px);line-height:1.7;color:#d9cbd2;white-space:pre-wrap}.start{margin-top:30px;border:1px solid #d6a4b8;background:#d6a4b8;color:#21141b;border-radius:999px;padding:15px 25px;font:14px Arial,sans-serif;letter-spacing:.04em}.start:active{transform:scale(.98)}.stage{position:fixed;inset:0;background:#080609;display:none;align-items:center;justify-content:center}.media{width:100%;height:100%;object-fit:contain;animation:ken 8s ease-in-out both}.shade{position:absolute;inset:0;background:linear-gradient(0deg,#080609e8,transparent 55%,#08060933)}.caption{position:absolute;bottom:max(8vh,45px);left:8%;right:8%;font-size:clamp(22px,5vw,36px);text-shadow:0 2px 15px #000;animation:appear 1s both}.count{position:absolute;top:28px;right:25px;font:11px Arial,sans-serif;letter-spacing:.12em;color:#d8c5cf}.ending{display:none}.fade{animation:fade .8s both}@keyframes appear{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}@keyframes fade{to{opacity:0}}@keyframes ken{0%{transform:scale(1)}100%{transform:scale(1.09)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+ </style></head><body>
+ <section class="screen" id="welcome"><div class="welcome"><div class="eyebrow">A little something for you</div><h1 class="title">${escapeHtml(d.title)}</h1><div class="line">${escapeHtml(d.line)}</div><button class="start" id="start">${escapeHtml(d.button)}</button></div></section>
+ <main class="stage" id="stage"><div id="mediaHost" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"></div><div class="shade"></div><div class="count" id="count"></div><div class="caption" id="caption"></div></main>
+ <section class="screen" id="end" style="display:none"><div class="ending" id="ending"><div class="eyebrow">Always remember</div><h1 class="title">${escapeHtml(d.endingTitle)}</h1><div class="line">${escapeHtml(d.ending)}</div><div class="eyebrow" style="margin-top:34px">Made with love · for Angelina</div></div></section>
+ <audio id="music" ${d.audio?'src="'+d.audio+'"':''} loop></audio>
+ <script>const D=${safe};const $=id=>document.getElementById(id);let i=0,timer=null,vid=null;function show(){if(i>=D.scenes.length){$("stage").style.display="none";$("end").style.display="flex";$("ending").style.display="block";return;}const s=D.scenes[i];$("mediaHost").innerHTML="";let el=document.createElement(s.type==="video"?"video":"img");el.className="media";el.src=s.data;if(s.type==="video"){el.playsInline=true;el.muted=false;el.autoplay=true;el.onended=next;vid=el;el.play().catch(()=>{});}$("mediaHost").appendChild(el);$("caption").textContent=s.caption||"";$("count").textContent=String(i+1).padStart(2,"0")+" / "+String(D.scenes.length).padStart(2,"0");if(s.type==="image")timer=setTimeout(next,D.duration*1000);}function next(){clearTimeout(timer);if(vid){vid.pause();vid=null;}i++;show();}$("start").onclick=()=>{$("welcome").style.display="none";$("stage").style.display="flex";const m=$("music");if(m.src)m.play().catch(()=>{});show();};${"</"+"script>"}</body></html>`;
+}
+</script>
+</body></html>
